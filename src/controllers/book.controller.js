@@ -94,7 +94,7 @@ const updateBookById = async (req, res, next) => {
   try {
     const { bookId } = req.params;
 
-    const findBook = await Book.findOneAndUpdate(bookId, req.body, {
+    const findBook = await Book.findByIdAndUpdate(bookId, req.body, {
       new: true,
     });
 

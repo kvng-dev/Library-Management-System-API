@@ -11,7 +11,7 @@ const signup = async (req, res) => {
     const checkEmail = await User.findOne({ email });
 
     if (checkEmail) {
-      res
+      return res
         .status(400)
         .status({ status: "Error", message: "Email already exists!" });
     }
@@ -108,5 +108,5 @@ const findUserById = async (req, res, next) => {
 module.exports = {
   signup,
   login,
-  findUserById
+  findUserById,
 };

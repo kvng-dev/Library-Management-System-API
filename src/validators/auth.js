@@ -2,7 +2,7 @@ const { check, validationResult } = require("express-validator");
 
 const validate = (req, res, next) => {
   const errors = validationResult(req);
-  if (!errors.isEmpty) {
+  if (!errors.isEmpty()) {
     const errorObj = {};
     errors.array().forEach((e) => {
       errorObj[e.path] = (errorObj[e.path] || []).concat([e.msg]);
@@ -33,7 +33,6 @@ const validateLogin = [
 
 const validateSignup = [
   check("username").notEmpty().withMessage("Username is required"),
-  check("role").notEmpty().withMessage("Role is required"),
   check("email")
     .notEmpty()
     .withMessage("Email is required")
@@ -48,6 +47,6 @@ const validateSignup = [
 ];
 
 module.exports = {
-  validateSignup,
   validateLogin,
+  validateSignup,
 };

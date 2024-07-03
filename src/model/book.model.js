@@ -12,6 +12,15 @@ const bookSchema = new mongoose.Schema(
     },
     genre: {
       type: String,
+      enum: [
+        "Fiction",
+        "Non-Fiction",
+        "Mystery",
+        "Fantasy",
+        "Science Fiction",
+        "Biography",
+        "History",
+      ],
       required: true,
     },
     quantity: {
