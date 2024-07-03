@@ -2,12 +2,12 @@ Library Management System
 This Library Management System allows users to borrow and return books, and allows librarians to add new books to the library and update existing book details. The system is built using Node.js, Express, and MongoDB.
 
 Table of Contents
--Features
--Installation
--Usage
--API Endpoints
--Authentication and Authorization
--Contributing
+                        -Features
+                        -Installation
+                        -Usage
+                        -API Endpoints
+                        -Authentication and Authorization
+                        -Contributing
 
 Features
 User Authentication: Secure user authentication using JSON Web Tokens (JWT).
