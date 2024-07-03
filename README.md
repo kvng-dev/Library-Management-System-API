@@ -26,6 +26,7 @@ Book Availability: Track book quantities to ensure availability.
 
 
 Installation
+
 Clone the repository:
 git clone https://github.com/yourusername/library-management-system.git
 Navigate to the project directory:
@@ -37,13 +38,12 @@ Create a .env file in the root directory and add the following environment varia
 env
 
 PORT=3000
-
 MONGO_URI=mongodb://localhost:27017/library
-
 JWT_SECRET=your_jwt_secret
 
 
 Usage
+
 Start the server:
 npm start
 The server will be running at http://localhost:5000/api/v1.
@@ -70,6 +70,7 @@ POST /books/return/:bookId
 Return a borrowed book (Authenticated users)
 
 Authentication and Authorization
+
 Authentication: Implemented using JSON Web Tokens (JWT).
 Authorization: Role-based access control to restrict certain actions to librarians only.
 
