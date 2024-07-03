@@ -1,4 +1,4 @@
-const Book = require("../middleware/book.model");
+const Book = require("../model/book.model");
 const User = require("../model/user.model");
 
 const createBook = async (req, res, next) => {
