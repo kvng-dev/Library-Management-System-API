@@ -39,14 +39,22 @@ const createBook = async (req, res, next) => {
 
 const getAllBooks = async (req, res, next) => {
   try {
-    const { title } = req.query;
+    const { title, genre } = req.query;
     const filter = {};
 
     if (title) {
       filter.title = new RegExp(title, "i");
     }
 
-    const books = await Book.find();
+    if (author) {
+      filter.author = new RegExp(author, "i");
+    }
+
+    if(genre) {
+      filter.genre = genre;
+    }
+
+    const books = await Book.find(filter);
 
     return res.status(200).json({
       status: "success",
