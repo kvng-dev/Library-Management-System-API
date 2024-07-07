@@ -18,6 +18,7 @@ const createBook = async (req, res, next) => {
       author: req.body.author,
       genre: req.body.genre,
       quantity: req.body.quantity,
+      available: req.body.available,
       createdBy: req.user._id,
     });
 
@@ -39,7 +40,7 @@ const createBook = async (req, res, next) => {
 
 const getAllBooks = async (req, res, next) => {
   try {
-    const { title, genre } = req.query;
+    const { title, genre, author } = req.query;
     const filter = {};
 
     if (title) {
@@ -47,10 +48,10 @@ const getAllBooks = async (req, res, next) => {
     }
 
     if (author) {
-      filter.author = new RegExp(author, "i");
+      filter.author = new RegExp(title, "i");
     }
 
-    if(genre) {
+    if (genre) {
       filter.genre = genre;
     }
 
@@ -167,10 +168,18 @@ const borrowBook = async (req, res, next) => {
       });
     }
 
+    if (!book.available) {
+      return res.status(400).json({
+        status: "error",
+        message: `Book with Title: ${book.title} is not available for borrowing`,
+      });
+    }
+
     const user = await User.findById(userId);
     user.borrowedBooks.push({ bookId: book, title: book.title });
 
     book.quantity -= 1;
+    book.available = book.quantity > 0;
     await user.save();
     await book.save();
 
@@ -206,6 +215,7 @@ const returnBook = async (req, res, next) => {
 
     const book = await Book.findById(bookId);
     book.quantity += 1;
+    book.available = book.quantity > 0;
     await user.save();
     await book.save();
 

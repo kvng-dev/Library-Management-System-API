@@ -18,9 +18,9 @@ const userSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      enum: ["librarian", "user"],
+      enum: ["Librarian", "User", "Admin"],
       required: true,
-      default: "user",
+      default: "User",
     },
     borrowedBooks: [
       {

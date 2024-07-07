@@ -45,7 +45,7 @@ const auth = async (req, res, next) => {
 
 const librarianAuth = async(req, res, next) => {
 
-  if(req.user && req.user.role === 'librarian') {
+  if(req.user && req.user.role === 'Librarian') {
     next()
   } else {
     return res.status(403).json({

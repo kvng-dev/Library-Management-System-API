@@ -27,6 +27,10 @@ const bookSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    available: {
+      type: Boolean,
+      required: true,
+    },
   },
   {
     timestamps: true,
